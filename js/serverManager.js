@@ -1,8 +1,15 @@
+const Instance = require("./classes/instance/instance");
+
 class ServerManager{
-    instances;
+    instances = [];
+    idCounter = 0;
     registerInstance(){
-        console.log("Registered an instance");
-        return 1;
+        var newInstance = new Instance({
+            ID: this.idCounter++,
+            Users: []
+        })
+        this.instances.push(newInstance);
+        return newInstance.ID;
     }
 }
 
