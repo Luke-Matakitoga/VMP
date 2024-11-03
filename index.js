@@ -1,0 +1,1 @@
+console.log("VMP is running")
