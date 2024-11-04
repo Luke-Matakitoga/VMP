@@ -6,8 +6,15 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 
 
-// Setup routes
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json())
+
 app.use('/v1/instances', require('./endpoints/instanceEndpoints'));
+
+app.get('/ping', (req, res) => {
+    res.status(200).json({"result":"pong"});
+});
+
 
 const options = {
   definition: {
