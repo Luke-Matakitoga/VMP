@@ -4,9 +4,10 @@ const User = require("./classes/user/user");
 class ServerManager{
     instances = [];
     idCounter = 0;
-    registerInstance(){
+    registerInstance(instanceName){
         var newInstance = new Instance({
             ID: this.idCounter++,
+            Name: instanceName,
             Users: []
         });
         this.instances.push(newInstance);

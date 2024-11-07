@@ -11,7 +11,7 @@ app.use(express.json())
 
 app.use('/v1/instances', require('./endpoints/instanceEndpoints'));
 
-app.get('/ping', (req, res) => {
+app.get('/v1/ping', (req, res) => {
     res.status(200).json({"result":"pong"});
 });
 

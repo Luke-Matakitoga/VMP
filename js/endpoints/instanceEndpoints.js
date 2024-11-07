@@ -11,9 +11,27 @@ const manager = require('../manager');
  *       200:
  *         description: The ID of the newly registered instance
  */
-router.get('/reg', (req, res) => {
-    var result = manager.registerInstance();
-    res.json({"ID":result})
+router.post('/reg', (req, res) => {
+    var result = manager.registerInstance(req.body.InstanceName);
+    res.json({"InstanceId":result})
+});
+
+/**
+ * @swagger
+ * /v1/instances:
+ *   get:
+ *     summary: Register a new instance
+ *     responses:
+ *       200:
+ *         description: The ID of the newly registered instance
+ */
+router.get('/', (req, res) => {
+    var result = manager.instances.map(instance => {
+        return {
+            InstanceName: instance.Name
+        };
+    });
+    res.json({"Instances":result})
 });
 
 /**
